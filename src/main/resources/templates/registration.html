@@ -1,0 +1,54 @@
+<!DOCTYPE HTML>
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>User Info</title>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<link rel="stylesheet" type="text/css" th:href="@{/styles.css}">
+
+</head>
+<body>
+	<!-- Include _menu.html -->
+	<th:block th:include="/_menu"></th:block>
+
+	<h3>
+		Welcome : <span th:utext="${#request.userPrincipal.name}"></span>
+	</h3>
+<body>
+	<form action="#" th:action="@{/guest}" th:object="${guest}"
+		method="post">
+		<table>
+			<tr>
+				<td>Name:</td>
+				<td><input type='text' name='name' value=''></td>
+			</tr>
+			<tr>
+				<td>Email:</td>
+				<td><input type='text' name='email' value=''></td>
+
+			</tr>
+			<tr>
+				<td>Address:</td>
+				<td><input type='text' name='address' value=''></td>
+
+			</tr>
+			<tr>
+				<td>State:</td>
+				<td><input type='text' name='state' value=''></td>
+
+			</tr>
+			<tr>
+				<td>Phone:</td>
+				<td><input type='text' name='phone' value=''></td>
+
+			</tr>
+
+			<tr>
+				<td><button type="submit">Submit</button></td>
+			</tr>
+		</table>
+	</form>
+</body>
+
+</html>

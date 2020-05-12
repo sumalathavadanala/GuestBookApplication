@@ -1,0 +1,47 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+   <head>
+      <title th:utext="${title}"></title>
+      <link rel="stylesheet" type="text/css" th:href="@{/styles.css}">
+   </head>
+   <body>
+      <!-- Include _menu.html -->
+      <th:block th:include="/_menu"></th:block>
+       
+      <h2>Admin Page</h2>
+      <h3>Welcome :
+         <span th:utext="${#request.userPrincipal.name}"></span>
+      </h3>
+       
+      <br/><br/>
+       
+      <div th:if="${userInfo != null}" th:utext="${userInfo}"></div>
+      
+      <br/><br/>
+      
+      <div class="column">
+            <table class="table datatable">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th>State</th>
+                        <th>Address</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="details : ${guestDetails}">
+                        <td th:text="${details.name}">Text ...</td>
+                        <td th:text="${details.email}">Text ...</td>
+                        <td th:text="${details.phone}">Text ...</td>
+                        <td th:text="${details.state}">Text ...</td>
+                        <td th:text="${details.address}">Text ...</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>    
+       
+   </body>
+    
+</html>
