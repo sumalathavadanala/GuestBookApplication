@@ -1,5 +1,6 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" 
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
    <head>
       <title th:utext="${title}"></title>
       <link rel="stylesheet" type="text/css" th:href="@{/styles.css}">
@@ -19,7 +20,39 @@
       
       <br/><br/>
       
+      <!--  <form name='f' th:action="@{/approveReject}" th:object="${guest}" method='POST'> -->
       <div class="column">
+            <table class="table datatable">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th>State</th>
+                        <th>Address</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="details : ${guestDetails}">
+                        <td th:text="${details.name}">Text ...</td>
+                        <td th:text="${details.email}">Text ...</td>
+                        <td th:text="${details.phone}">Text ...</td>
+                        <td th:text="${details.state}">Text ...</td>
+                        <td th:text="${details.address}">Text ...</td>
+                        <td> <a th:href="@{|/approveReject?id=${details.id}|}">Approve</a> <br>
+                         <a th:href="@{|/reject?id=${details.id}|}">Reject</a> 
+                        <!--
+                        <input name="action" type="submit" value="reject" id="${details.id}"/>
+                        <input name="action" type="submit" value="approve" id="${details.id}"/> -->
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>   
+        <br/>
+        <h2>Approved Records</h2><br/>
+        <div class="column">
             <table class="table datatable">
                 <thead>
                     <tr>
@@ -31,7 +64,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr th:each="details : ${guestDetails}">
+                    <tr th:each="details : ${guestApprovedDetails}">
                         <td th:text="${details.name}">Text ...</td>
                         <td th:text="${details.email}">Text ...</td>
                         <td th:text="${details.phone}">Text ...</td>
@@ -40,7 +73,7 @@
                     </tr>
                 </tbody>
             </table>
-        </div>    
+        </div>   
        
    </body>
     

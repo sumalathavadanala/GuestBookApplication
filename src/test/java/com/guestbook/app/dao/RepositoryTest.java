@@ -4,6 +4,7 @@ import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
+
  
 import java.util.ArrayList;
 import java.util.List;
@@ -33,8 +34,7 @@ public class RepositoryTest {
 	@Test
     public void getGuestNameTest()
     {
-		Guest guest = rep.findByName("latha");
-		System.out.println(guest.getName());
+		Guest guest = rep.findByName("suma");
 		 assertEquals("suma", guest.getName());
     }
 }
